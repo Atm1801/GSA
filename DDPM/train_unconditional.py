@@ -201,14 +201,7 @@ def main(args):
     )
     accepts_prediction_type = "prediction_type" in set(inspect.signature(DDPMScheduler.__init__).parameters.keys())
 
-    if accepts_prediction_type:
-        noise_scheduler = DDPMScheduler(
-            num_train_timesteps=args.diffusion_steps,
-            beta_schedule=args.diffusion_beta_schedule,
-            prediction_type=args.prediction_type,
-        )
-    else:
-        noise_scheduler = DDPMScheduler(num_train_timesteps=args.diffusion_steps, beta_schedule=args.diffusion_beta_schedule)
+    noise_scheduler = DDPMScheduler(num_train_timesteps=args.diffusion_steps, beta_schedule=args.diffusion_beta_schedule)
 
     optimizer = torch.optim.AdamW(
         model.parameters(),
