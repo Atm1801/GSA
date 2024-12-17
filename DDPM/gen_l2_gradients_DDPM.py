@@ -240,7 +240,9 @@ def main(args):
         progress_bar.set_description(f"Epoch {epoch}")
         
         all_samples_grads = []
-        for step, batch in enumerate(train_dataloader[:2000]):
+        for step, batch in enumerate(train_dataloader):
+            if step == 2000:
+                break
             clean_images = batch["input"]
             clean_images = clean_images.repeat(args.sampling_frequency,1,1,1)
             # Sample noise that we'll add to the images
