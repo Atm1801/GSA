@@ -241,7 +241,7 @@ def main(args):
         
         all_samples_grads = []
         for step, batch in enumerate(train_dataloader):
-            if step == 2000:
+            if step == 20:
                 break
             clean_images = batch["input"]
             clean_images = clean_images.repeat(args.sampling_frequency,1,1,1)
